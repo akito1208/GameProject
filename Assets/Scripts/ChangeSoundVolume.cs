@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// "AudioSource"コンポーネントがアタッチされない場合アタッチ
 [RequireComponent(typeof(AudioSource))]
 public class ChangeSoundVolume : MonoBehaviour
 {
-    private AudioSource audioSource;
+    AudioSource audioSource;
 
-    private void start()
+    private void Start()
     {
         // "AudioSource"コンポーネントを取得
         audioSource = gameObject.GetComponent<AudioSource>();
-
     }
 
     /// <summary>
@@ -21,7 +19,15 @@ public class ChangeSoundVolume : MonoBehaviour
     /// <param name="newSliderValue">スライドバーの値(自動的に引数に値が入る)</param>
     public void SoundSliderOnValueChange(float newSliderValue)
     {
+        //オーディオ　.(の)　ボリューム
         // 音楽の音量をスライドバーの値に変更
         audioSource.volume = newSliderValue;
+    }
+
+    public void SoundSliderOnPitchChange(float newSliderValue)
+    {
+            //オーディオ　.(の)　ピッチ
+            // 音楽の速度をスライドバーの値に変更
+            audioSource.pitch = newSliderValue;
     }
 }
